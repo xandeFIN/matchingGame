@@ -12,7 +12,22 @@ using System.Diagnostics;
 namespace matchingGame
 {
     public partial class EightCardGame : Form
+    // public class EightCardGame : CardGameBase
     {
+
+        /*
+        public void SpecialFunction()
+        {
+            Tähän pelikohtainen toiminto
+        }
+
+        public void Play()
+        {
+            Kutsu yhteistä funktiota, esim:
+            CommonFunction();
+            SpecialFunction();
+        }
+        */
 
         // This Random uses an object to choose random icons for the squares/cards
         Random random = new Random();
@@ -45,6 +60,7 @@ namespace matchingGame
             }
         }
 
+        
         private void CheckForWinner()
         {
             foreach (Control control in layoutEightCards.Controls)
@@ -63,16 +79,40 @@ namespace matchingGame
             string format = "F2";
 
             MessageBox.Show($"Your time was {elapsedTimeSeconds.ToString(format)} s");
-           /* DialogResult result = MessageBox.Show("Do you want to try again?", "Yes or No", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Do you want to try again?", "Yes or No", MessageBoxButtons.YesNo);
+
             if (result == DialogResult.Yes)
             {
-                new EightCardGame();
-            }
+                ResetGame();
+            }      
             else if (result == DialogResult.No)
             {
                 this.Close();
             }
-           */
+           
+        }
+        
+        private void ResetGame()
+        {
+            // Tyhjennä aiemman pelin tila
+            foreach (Control control in layoutEightCards.Controls)
+            {
+                Label iconLabel = control as Label;
+                if (iconLabel != null)
+                {
+                    iconLabel.Text = string.Empty;
+                    iconLabel.ForeColor = Color.Black;
+                }
+            }
+
+            // Palauta alkuperäiset kuvakkeet
+            icons.AddRange(new List<string> { "!", "!", "N", "N", ",", ",", "k", "k" });
+
+            // Sekoita kuvakkeet
+            AssignIconsToSquares();
+
+            // Nollaa ajanotto
+            stopWatch.Reset();
         }
 
         public EightCardGame()
