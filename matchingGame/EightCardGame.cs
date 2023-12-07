@@ -8,59 +8,47 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Net;
 
 namespace matchingGame
 {
     public partial class EightCardGame : Form
-    // public class EightCardGame : CardGameBase
     {
-
-        /*
-        public void SpecialFunction()
-        {
-            Tähän pelikohtainen toiminto
-        }
-
-        public void Play()
-        {
-            Kutsu yhteistä funktiota, esim:
-            CommonFunction();
-            SpecialFunction();
-        }
-        */
-
         // This Random uses an object to choose random icons for the squares/cards
         Random random = new Random();
+
+        Functions methods = new Functions();
 
         /* Each of these letters is an icon in the Webdings font,
          and each icon appears twice in this list
         */
-        List<string> icons = new List<string>()
-    {
-        "!", "!", "N", "N", ",", ",", "k", "k"
-    };
+
+        List<string> icons;
 
         Label firstClicked = null;
         Label secondClicked = null;
 
         private Stopwatch stopWatch;
 
-        private void AssignIconsToSquares()
+        /* ALKUPERÄISTÄ KOODIA
+         private void AssignIconsToSquares()
         {
             foreach (Control control in layoutEightCards.Controls)
             {
-                Label iconLabel = control as Label;
+              Label iconLabel = control as Label;
                 if (iconLabel != null)
                 {
                     int randomNumber = random.Next(icons.Count);
                     iconLabel.Text = icons[randomNumber];
                     iconLabel.ForeColor = iconLabel.BackColor;
                     icons.RemoveAt(randomNumber);
-                }
+                }              
             }
         }
+        */
 
         
+        /* ALKUPERÄINEN KOODI
         private void CheckForWinner()
         {
             foreach (Control control in layoutEightCards.Controls)
@@ -70,7 +58,7 @@ namespace matchingGame
                 if (iconLabel != null)
                 {
                     if (iconLabel.ForeColor == iconLabel.BackColor)
-                        return;
+                    return;
                 }
             }
             MessageBox.Show("You matched all the icons!", "Congratulations!");
@@ -89,9 +77,11 @@ namespace matchingGame
             {
                 this.Close();
             }
-           
         }
+        */
         
+        
+        /* ALKUPERÄINEN KOODI
         private void ResetGame()
         {
             // Tyhjennä aiemman pelin tila
@@ -106,22 +96,41 @@ namespace matchingGame
             }
 
             // Palauta alkuperäiset kuvakkeet
-            icons.AddRange(new List<string> { "!", "!", "N", "N", ",", ",", "k", "k" });
+            //icons.AddRange(new List<string> { "!", "!", "N", "N", ",", ",", "k", "k" });
+            icons = methods.GenerateIcons(4);
 
             // Sekoita kuvakkeet
-            AssignIconsToSquares();
+            methods.AssignIconsToSquares(layoutEightCards.Controls, icons);
 
             // Nollaa ajanotto
             stopWatch.Reset();
         }
+        */
 
         public EightCardGame()
         {
             InitializeComponent();
-            AssignIconsToSquares();
             stopWatch = new Stopwatch();
+            methods.ResetGame(layoutEightCards.Controls, icons);
+            icons = methods.GenerateIcons(4);
+            methods.AssignIconsToSquares(layoutEightCards.Controls, icons);
+            methods.CheckForWinner(layoutEightCards.Controls, stopWatch);
+            //PlayAgain(); -- TÄMÄ UUDELLEEN PELAAMISEN MAHDOLLISUUS KUNTOON -- 7.12.2023
         }
 
+       /* private void PlayAgain()
+        {
+            DialogResult result = MessageBox.Show("Do you want to try again?", "Yes or No", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                methods.ResetGame(layoutEightCards.Controls, icons);
+            }
+            else if (result == DialogResult.No)
+            {
+                this.Close();
+            }
+        }
+       */
         private void label1_Click(object sender, EventArgs e)
         {
             stopWatch.Start();
@@ -137,22 +146,18 @@ namespace matchingGame
                 if (clickedLabel.ForeColor == Color.Black)
                     return;
 
-
                 if (firstClicked == null)
                 {
                     firstClicked = clickedLabel;
                     firstClicked.ForeColor = Color.Black;
-
                     return;
                 }
 
                 secondClicked = clickedLabel;
                 secondClicked.ForeColor = Color.Black;
 
-                CheckForWinner();
+                methods.CheckForWinner(layoutEightCards.Controls, stopWatch);
                 stopWatch.Stop();
-
-
 
                 if (firstClicked.Text == secondClicked.Text)
                 {
@@ -162,7 +167,6 @@ namespace matchingGame
                 }
 
                 timer1.Start();
-
             }
         }
 
