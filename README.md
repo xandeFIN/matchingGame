@@ -14,6 +14,7 @@ This particular game is quite simple with user friendly interface. No keyboard i
 
 To be applied...
 
-### TO DO NEXT WEEK 7th DEC 2023
-- functions to avoid duplicate code
-- save and load high score
+### TO DO NEXT WEEK 14th DEC 2023
+- finish functions/dialog boxes
+- start (and finish) 16- and 32-card games
+- save and load high score (maybe)
