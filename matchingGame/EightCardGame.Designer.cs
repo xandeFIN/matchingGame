@@ -65,6 +65,7 @@
             this.layoutEightCards.RowCount = 2;
             this.layoutEightCards.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.layoutEightCards.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutEightCards.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.layoutEightCards.Size = new System.Drawing.Size(534, 511);
             this.layoutEightCards.TabIndex = 2;
             // 
@@ -177,6 +178,7 @@
             this.Controls.Add(this.layoutEightCards);
             this.Name = "EightCardGame";
             this.Text = "Matching Game - 8 Cards";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EightCardGame_FormClosing);
             this.layoutEightCards.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -194,4 +196,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
     }
+
+
 }

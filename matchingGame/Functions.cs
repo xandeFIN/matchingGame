@@ -7,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace matchingGame
 {
@@ -79,6 +80,8 @@ namespace matchingGame
             string format = "F2";
 
             MessageBox.Show($"Your time was {elapsedTimeSeconds.ToString(format)} s");
+
+            Form.ActiveForm.Close();
         }
     }
 }

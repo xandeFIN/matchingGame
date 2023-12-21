@@ -34,6 +34,9 @@
             this.btnNormal = new System.Windows.Forms.Button();
             this.btnHard = new System.Windows.Forms.Button();
             this.lblHighScore = new System.Windows.Forms.Label();
+            this.noviceHighScore = new System.Windows.Forms.Button();
+            this.normalHighScore = new System.Windows.Forms.Button();
+            this.hardHighScore = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblHeading
@@ -97,7 +100,7 @@
             this.btnHard.Padding = new System.Windows.Forms.Padding(1);
             this.btnHard.Size = new System.Drawing.Size(178, 58);
             this.btnHard.TabIndex = 4;
-            this.btnHard.Text = "Hard - 32 Cards";
+            this.btnHard.Text = "Hard - 36 Cards";
             this.btnHard.UseVisualStyleBackColor = true;
             this.btnHard.Click += new System.EventHandler(this.btnHard_Click);
             // 
@@ -112,11 +115,41 @@
             this.lblHighScore.Text = "High Scores:";
             this.lblHighScore.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // noviceHighScore
+            // 
+            this.noviceHighScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noviceHighScore.Location = new System.Drawing.Point(294, 191);
+            this.noviceHighScore.Name = "noviceHighScore";
+            this.noviceHighScore.Size = new System.Drawing.Size(144, 58);
+            this.noviceHighScore.TabIndex = 6;
+            this.noviceHighScore.UseVisualStyleBackColor = true;
+            // 
+            // normalHighScore
+            // 
+            this.normalHighScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.normalHighScore.Location = new System.Drawing.Point(294, 279);
+            this.normalHighScore.Name = "normalHighScore";
+            this.normalHighScore.Size = new System.Drawing.Size(144, 58);
+            this.normalHighScore.TabIndex = 7;
+            this.normalHighScore.UseVisualStyleBackColor = true;
+            // 
+            // hardHighScore
+            // 
+            this.hardHighScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hardHighScore.Location = new System.Drawing.Point(294, 368);
+            this.hardHighScore.Name = "hardHighScore";
+            this.hardHighScore.Size = new System.Drawing.Size(144, 58);
+            this.hardHighScore.TabIndex = 8;
+            this.hardHighScore.UseVisualStyleBackColor = true;
+            // 
             // GameInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 511);
+            this.Controls.Add(this.hardHighScore);
+            this.Controls.Add(this.normalHighScore);
+            this.Controls.Add(this.noviceHighScore);
             this.Controls.Add(this.lblHighScore);
             this.Controls.Add(this.btnHard);
             this.Controls.Add(this.btnNormal);
@@ -138,6 +171,9 @@
         private System.Windows.Forms.Button btnNormal;
         private System.Windows.Forms.Button btnHard;
         private System.Windows.Forms.Label lblHighScore;
+        private System.Windows.Forms.Button noviceHighScore;
+        private System.Windows.Forms.Button normalHighScore;
+        private System.Windows.Forms.Button hardHighScore;
     }
 }
 

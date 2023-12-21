@@ -24,18 +24,21 @@ namespace matchingGame
         {
             EightCardGame newWindow = new EightCardGame();
             newWindow.Show();
+            this.Hide();
         }
 
         private void btnNormal_Click(object sender, EventArgs e)
         {
             SixteenCardGame newWindow = new SixteenCardGame();
             newWindow.Show();
+            this.Hide();
         }
 
         private void btnHard_Click(object sender, EventArgs e)
         {
-            ThirtyTwoCardGame newWindow = new ThirtyTwoCardGame();
+            ThirtySixCardGame newWindow = new ThirtySixCardGame();
             newWindow.Show();
+            this.Hide();
         }
     }
 }

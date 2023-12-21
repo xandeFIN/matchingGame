@@ -8,13 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using System.Net;
-using System.IO;
 
 namespace matchingGame
 {
-    public partial class EightCardGame : Form
+    public partial class ThirtySixCardGame : Form
     {
+        
         Random random = new Random();
 
         Functions methods = new Functions();
@@ -26,23 +25,23 @@ namespace matchingGame
 
         private Stopwatch stopWatch;
 
-        public EightCardGame()
+        public ThirtySixCardGame()
         {
             InitializeComponent();
             stopWatch = new Stopwatch();
-            methods.ResetGame(layoutEightCards.Controls, icons);
-            icons = methods.GenerateIcons(4);
-            methods.AssignIconsToSquares(layoutEightCards.Controls, icons);
-            methods.CheckForWinner(layoutEightCards.Controls, stopWatch);
+            methods.ResetGame(layout36Cards.Controls, icons);
+            icons = methods.GenerateIcons(18);
+            methods.AssignIconsToSquares(layout36Cards.Controls, icons);
+            methods.CheckForWinner(layout36Cards.Controls, stopWatch);
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
             stopWatch.Start();
 
-            if (timer1.Enabled == true)
+            if (timer3.Enabled == true)
                 return;
-            
+
             Label clickedLabel = sender as Label;
 
             if (clickedLabel != null)
@@ -61,7 +60,7 @@ namespace matchingGame
                 secondClicked = clickedLabel;
                 secondClicked.ForeColor = Color.Black;
 
-                methods.CheckForWinner(layoutEightCards.Controls, stopWatch);
+                methods.CheckForWinner(layout36Cards.Controls, stopWatch);
                 stopWatch.Stop();
 
                 if (firstClicked.Text == secondClicked.Text)
@@ -71,13 +70,12 @@ namespace matchingGame
                     return;
                 }
 
-                timer1.Start();
+                timer3.Start();
             }
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer3_Tick(object sender, EventArgs e)
         {
-            timer1.Stop();
+            timer3.Stop();
             firstClicked.ForeColor = firstClicked.BackColor;
             secondClicked.ForeColor = secondClicked.BackColor;
 
@@ -85,10 +83,10 @@ namespace matchingGame
             secondClicked = null;
         }
 
-        private void EightCardGame_FormClosing(object sender, FormClosingEventArgs e)
+        private void ThirtySixCardGame_FormClosing(object sender, FormClosingEventArgs e)
         {
-            GameInterface form2 = new GameInterface();
-            form2.Show();
+            GameInterface form4 = new GameInterface();
+            form4.Show();
 
             if (e.Cancel)
             {
@@ -96,4 +94,5 @@ namespace matchingGame
             }
         }
     }
+
 }
