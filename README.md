@@ -12,7 +12,13 @@ This particular game is quite simple with user friendly interface. No keyboard i
 
 ### Sample Code
 
-To be applied...
+      public EightCardGame()
+        {
+            InitializeComponent();
+            stopWatch = new Stopwatch();
+            methods.ResetGame(layoutEightCards.Controls, icons);
+            icons = methods.GenerateIcons(4);
+            methods.AssignIconsToSquares(layoutEightCards.Controls, icons);
+            methods.CheckForWinner(layoutEightCards.Controls, stopWatch);
+        }
 
-### TO DO NEXT YEAR
-- save and load high score
