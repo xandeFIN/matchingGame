@@ -40,5 +40,10 @@ namespace matchingGame
             newWindow.Show();
             this.Hide();
         }
+
+        private void GameInterface_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
